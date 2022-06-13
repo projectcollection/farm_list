@@ -41,7 +41,7 @@ export default function SignIn({ navigation }: SignUpProps) {
                 errors,
                 isValid,
             }) => (
-                <View style={[{ width: "50%" }]}>
+                <View style={[]}>
                     <TextInput
                         placeholder="email"
                         onChangeText={handleChange("email")}

@@ -1,19 +1,40 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export enum AuthStackRoute {
-    SignIn = "SignIn",
-    SignUp = "SignUp",
+    SignIn = "signIn",
+    SignUp = "signUp",
 }
 
 export enum MainStackRoute {
-    Main = "Main",
+    Main = "main",
+    AddFarm = "addFarm",
 }
 
 //https://reactnavigation.org/docs/typescript/
 export type AuthStackParamList = {
-    SignIn: undefined;
-    SignUp: undefined;
+    [AuthStackRoute.SignIn]: undefined;
+    [AuthStackRoute.SignUp]: undefined;
 };
 
-export type SignInProps = NativeStackScreenProps<AuthStackParamList, "SignIn">;
-export type SignUpProps = NativeStackScreenProps<AuthStackParamList, "SignUp">;
+export type MainStackParamList = {
+    [MainStackRoute.Main]: undefined;
+    [MainStackRoute.AddFarm]: undefined;
+};
+
+export type SignInProps = NativeStackScreenProps<
+    AuthStackParamList,
+    AuthStackRoute.SignIn
+>;
+export type SignUpProps = NativeStackScreenProps<
+    AuthStackParamList,
+    AuthStackRoute.SignUp
+>;
+
+export type MainProps = NativeStackScreenProps<
+    MainStackParamList,
+    MainStackRoute.Main
+>;
+export type AddFarmProps = NativeStackScreenProps<
+    MainStackParamList,
+    MainStackRoute.AddFarm
+>;

@@ -2,6 +2,7 @@ import * as yup from "yup";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Main from "./Main";
+import AddFarm from "./AddFarm";
 
 const auth_validation_schema = yup.object().shape({
     email: yup.string().email("enter valid email").required("email required"),
@@ -11,4 +12,4 @@ const auth_validation_schema = yup.object().shape({
         .required("password required"),
 });
 
-export { SignIn, SignUp, Main, auth_validation_schema };
+export { SignIn, SignUp, Main, AddFarm, auth_validation_schema };

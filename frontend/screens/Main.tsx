@@ -10,11 +10,11 @@ import {
 import { signOut } from "firebase/auth";
 
 import { db, auth } from "../config/firebase";
-import { SignUpProps } from "../navigation/types";
+import { MainProps, MainStackRoute } from "../navigation/types";
 import { Farm as FarmData } from "../screens/types";
-import { AddFarmForm, Farm } from "./components";
+import { Farm } from "./components";
 
-export default function Main({ navigation }: SignUpProps) {
+export default function Main({ navigation }: MainProps) {
     const [farms, setFarms] = useState<DocumentData>([]);
     const [add, setAdd] = useState<boolean>(false);
 
@@ -29,36 +29,27 @@ export default function Main({ navigation }: SignUpProps) {
         return unsubscribe;
     }, []);
 
-    function toggle() {
-        setAdd(!add);
-    }
-
     return (
         <>
-            {!add ? (
-                <ScrollView
-                    style={{
-                        flexDirection: "column",
-                    }}
-                >
-                    {farms.length > 0 ? (
-                        farms.map((data: DocumentData) => (
-                            <Farm key={data.name} {...(data as FarmData)} />
-                        ))
-                    ) : (
-                        <Text>No farms yet</Text>
-                    )}
+            <ScrollView
+                style={{
+                    flexDirection: "column",
+                }}
+            >
+                {farms.length > 0 ? (
+                    farms.map((data: DocumentData) => (
+                        <Farm key={data.name} {...(data as FarmData)} />
+                    ))
+                ) : (
+                    <Text>No farms yet</Text>
+                )}
 
-                    <Button onPress={() => toggle()} title="add farm" />
-                    <Button onPress={() => signOut(auth)} title="sign out" />
-                </ScrollView>
-            ) : (
-                <AddFarmForm
-                    back={() => {
-                        toggle();
-                    }}
+                <Button
+                    onPress={() => navigation.navigate(MainStackRoute.AddFarm)}
+                    title="add farm"
                 />
-            )}
+                <Button onPress={() => signOut(auth)} title="sign out" />
+            </ScrollView>
         </>
     );
 }
