@@ -107,7 +107,7 @@ export default function AddFarmForm({ back }: { back: Function }) {
                         style={[form.input]}
                     />
                     <Button onPress={() => handleSubmit()} title="Submit" />
-                    <Button onPress={() => back()} title="cancel" />
+                    <Button onPress={() => back()} title="Cancel" />
                 </View>
             )}
         </Formik>

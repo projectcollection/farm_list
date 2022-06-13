@@ -46,9 +46,9 @@ export default function Main({ navigation }: MainProps) {
 
                 <Button
                     onPress={() => navigation.navigate(MainStackRoute.AddFarm)}
-                    title="add farm"
+                    title="ADD FARM"
                 />
-                <Button onPress={() => signOut(auth)} title="sign out" />
+                <Button onPress={() => signOut(auth)} title="SIGN OUT" />
             </ScrollView>
         </>
     );

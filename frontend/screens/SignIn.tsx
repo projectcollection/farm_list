@@ -43,6 +43,7 @@ export default function SignIn({ navigation }: SignUpProps) {
             }) => (
                 <View style={[]}>
                     <TextInput
+                        testID="email"
                         placeholder="email"
                         onChangeText={handleChange("email")}
                         onBlur={handleBlur("email")}
@@ -55,6 +56,7 @@ export default function SignIn({ navigation }: SignUpProps) {
                         </Text>
                     )}
                     <TextInput
+                        testID="password"
                         placeholder="password"
                         onChangeText={handleChange("password")}
                         onBlur={handleBlur("password")}
