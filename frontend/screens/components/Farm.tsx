@@ -12,7 +12,7 @@ import {
 
 import { Farm as FarmData } from "../types";
 import { storage_ref } from "../../config/firebase";
-import { update_doc } from "../../utils/firebase/firestore";
+import { update_doc, timestamp_to_date } from "../../utils/firebase/firestore";
 import { uri_to_blob, optional } from "../../utils/";
 
 export default function Farm({
@@ -21,6 +21,7 @@ export default function Farm({
     phone,
     openHours,
     image,
+    created_at,
 }: FarmData) {
     async function handle_image_change(farm_name: string) {
         const res = await launchImageLibraryAsync({
@@ -80,6 +81,12 @@ export default function Farm({
             <Text>display name: {displayName}</Text>
             <Text>phone: {optional(phone)}</Text>
             <Text>open hours: {optional(openHours)}</Text>
+            {created_at && (
+                <Text>
+                    created_at:{" "}
+                    {optional(timestamp_to_date(created_at)).toString()}
+                </Text>
+            )}
         </View>
     );
 }
