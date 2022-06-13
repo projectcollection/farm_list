@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, Button, ScrollView } from "react-native";
+import { View, Button, ScrollView, Text } from "react-native";
 import {
     query,
     collection,
@@ -41,9 +41,13 @@ export default function Main({ navigation }: SignUpProps) {
                         flexDirection: "column",
                     }}
                 >
-                    {farms.map((data: DocumentData) => (
-                        <Farm key={data.name} {...(data as FarmData)} />
-                    ))}
+                    {farms.length > 0 ? (
+                        farms.map((data: DocumentData) => (
+                            <Farm key={data.name} {...(data as FarmData)} />
+                        ))
+                    ) : (
+                        <Text>No farms yet</Text>
+                    )}
 
                     <Button onPress={() => toggle()} title="add farm" />
                     <Button onPress={() => signOut(auth)} title="sign out" />
