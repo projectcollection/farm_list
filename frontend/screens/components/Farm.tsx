@@ -33,12 +33,14 @@ export default function Farm({
 
         const ref = storage_ref(`farm_images/${farm_name}`);
 
-        await uploadBytes(ref, blob, { contentType: blob.type });
+        await uploadBytes(ref, blob, {
+            contentType: blob.type,
+            cacheControl: "public,max-age=4000",
+        });
         const img_url = await getDownloadURL(ref);
 
         update_doc("farms", farm_name, {
             image: img_url,
-            cacheControl: "public,max-age=4000",
         });
     }
 
